@@ -19,6 +19,7 @@
     display: flex;
     flex-wrap: wrap; /* Garante que os produtos se ajustem à tela */
     gap: 10px;
+    justify-content: center; /* Centraliza os produtos */
 }
 
 /* Estiliza cada produto */
@@ -45,4 +46,17 @@
 
 .comprar:hover {
     background-color: #ff579a;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+    .produtos {
+        display: flex;
+        flex-direction: column; /* Faz os produtos ficarem em uma coluna */
+        align-items: center; /* Centraliza os produtos */
+    }
+
+    .produto {
+        width: 90%; /* Faz os produtos ficarem maiores no celular */
+    }
 }
