@@ -188,12 +188,6 @@ const produtosPorDepartamento = {
       preco: "R$ 16,00"
     },
     {
-      imagem: "/assents/img/barra trufada.jpeg",
-      nome: "barra trufada",
-      descricao: "",
-      preco: "R$ 24,00"
-    },
-    {
       imagem: "/assents/img/ovo-350g.jpeg",
       nome: "Ovo tradicional meio amargo ou ao leite - 350g",
       descricao: "",
@@ -232,7 +226,7 @@ const produtosPorDepartamento = {
       preco: "R$ 8,00"
     },
     {
-      imagem: "/assents/img/shutterstock-1949230144-1-1-.jpg",
+      imagem: "/assents/img/musse-limao.jpeg",
       nome: "Mousse de Limão",
       descricao: "Mousse de limão com raspas das frutas por cima.",
       preco: "R$ 8,00"
@@ -244,7 +238,13 @@ const produtosPorDepartamento = {
       nome: "Bombom Trufado",
       descricao: "Chocolate recheado com ganache especial.",
       preco: "R$ 3,00"
-    }
+    },
+    {
+      imagem: "/assents/img/barra trufada.jpeg",
+      nome: "barra trufada",
+      descricao: "",
+      preco: "R$ 24,00"
+    },
   ],
   "Cones": [
     {
