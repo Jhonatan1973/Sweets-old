@@ -241,24 +241,45 @@ document.getElementById('fechar-compra').addEventListener('click', function () {
   document.getElementById('modal-compra').style.display = 'none';
 });
 
+// Mostrar ou esconder o campo de endereço dependendo da escolha (Entrega ou Retirada)
+document.getElementById('entrega-retirada').addEventListener('change', function () {
+  const campoEndereco = document.getElementById('campo-endereco');
+  if (this.value === 'entrega') {
+    campoEndereco.style.display = 'block';
+  } else {
+    campoEndereco.style.display = 'none';
+  }
+});
+
 // Botão salvar
 document.getElementById('salvar-compra').addEventListener('click', function () {
-  const nome = document.getElementById('produto-nome').textContent;
+  const nomeComprador = document.getElementById('nome-comprador').value;
+  const nomeProduto = document.getElementById('produto-nome').textContent;
   const formaPagamento = document.getElementById('forma-pagamento').value;
-  const dataEntrega = document.getElementById('data-entrega').value;
+  const tipoEntrega = document.getElementById('entrega-retirada').value;
+  const dataEntrega = document.getElementById('data-entrega') ? document.getElementById('data-entrega').value : null;
+  const enderecoEntrega = document.getElementById('endereco') ? document.getElementById('endereco').value : null;
 
-  // Verifica se o campo de data está preenchido
-  if (!dataEntrega) {
-    alert('Por favor, selecione uma data de entrega.');
+  // Verifica se todos os campos obrigatórios estão preenchidos
+  if (!nomeComprador || !dataEntrega || (tipoEntrega === 'entrega' && !enderecoEntrega)) {
+    alert('Por favor, preencha todos os campos!');
     return;
   }
 
   // Monta a mensagem que será enviada pelo WhatsApp
-  const mensagem = encodeURIComponent(`Olá, eu sou {digite seu nome}, gostaria de encomendar o produto *${nome}*, a forma de pagamento será *${formaPagamento}* e a data de entrega seria *${dataEntrega}*.`);
+  let mensagem = `Olá, eu sou ${nomeComprador}, gostaria de encomendar o produto *${nomeProduto}*, a forma de pagamento será *${formaPagamento}* e a data de entrega seria *${dataEntrega}*.\n`;
+  
+  if (tipoEntrega === 'entrega') {
+    mensagem += `Endereço de entrega: *${enderecoEntrega}*`;
+  } else {
+    mensagem += `Opção de retirada selecionada.`;
+  }
+
+  const mensagemEncoded = encodeURIComponent(mensagem);
 
   // Número do WhatsApp (com código do país)
   const numeroWhatsapp = '+5511945124322';
-  const urlWhatsApp = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
+  const urlWhatsApp = `https://wa.me/${numeroWhatsapp}?text=${mensagemEncoded}`;
 
   // Redireciona para o WhatsApp com a mensagem
   window.open(urlWhatsApp, '_blank');
