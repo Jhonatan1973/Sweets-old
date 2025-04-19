@@ -38,43 +38,118 @@ function carregarCabecalho() {
           }
         });
       }
-// Evento para filtrar os produtos ao clicar em "Páscoa"
-const opcaoPascoa = document.getElementById("filtrar-pascoa");
-if (opcaoPascoa) {
-  opcaoPascoa.addEventListener("click", function () {
+      // Função para abrir o modal de feedback
+document.getElementById("feedback-btn").addEventListener("click", function () {
+  const feedbackModal = document.getElementById("feedback-modal");
+  feedbackModal.style.display = "block";
+});
+
+// Função para fechar o modal de feedback
+document.querySelector(".close-feedback").addEventListener("click", function () {
+  const feedbackModal = document.getElementById("feedback-modal");
+  feedbackModal.style.display = "none";
+});
+
+// Fechar o modal se o usuário clicar fora dele
+window.addEventListener("click", function (event) {
+  const feedbackModal = document.getElementById("feedback-modal");
+  if (event.target === feedbackModal) {
+    feedbackModal.style.display = "none";
+  }
+});
+
+// Função para enviar o feedback (aqui você pode implementar o envio para um servidor, por exemplo)
+document.getElementById("feedback-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Impede o envio do formulário padrão
+
+  const feedbackText = document.getElementById("feedback-text").value;
+  if (feedbackText.trim() !== "") {
+    console.log("Feedback recebido:", feedbackText); // Aqui você pode fazer algo com o feedback, como enviar para um servidor
+    alert("Obrigado pelo seu feedback!");
+    document.getElementById("feedback-modal").style.display = "none"; // Fecha o modal após o envio
+  } else {
+    alert("Por favor, deixe seu feedback antes de enviar.");
+  }
+});
+
+  // Função para filtrar os departamentos com base na data comemorativa
+  function filtrarPorDataComemorativa(dataComemorativa) {
     const departamentos = document.querySelectorAll(".departamento");
 
     departamentos.forEach(departamento => {
       const titulo = departamento.querySelector("h2").textContent;
-      if (titulo === "Páscoa") {
+
+      // Exibe o departamento apenas se o título corresponder à data comemorativa
+      if (titulo === dataComemorativa) {
         departamento.style.display = "block";
       } else {
         departamento.style.display = "none";
       }
     });
 
-    modal.style.display = "none"; // Fecha o modal
-  });
-}
+    modal.style.display = "none"; // Fecha o modal após o filtro
+  }
 
-// Evento para remover o filtro ao clicar em "Tirar"
-const opcaoTirar = document.getElementById("tirar-filtro");
-if (opcaoTirar) {
-  opcaoTirar.addEventListener("click", function () {
-    const departamentos = document.querySelectorAll(".departamento");
-
-    departamentos.forEach(departamento => {
-      departamento.style.display = "block";
+  // Evento para filtrar os produtos ao clicar em uma data comemorativa
+  const opcaoDiaDasMulheres = document.getElementById("filtrar-dia-das-mulheres");
+  if (opcaoDiaDasMulheres) {
+    opcaoDiaDasMulheres.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Dia das Mulheres");
     });
+  }
 
-    modal.style.display = "none"; // Fecha o modal
-  });
+  const opcaoPascoa = document.getElementById("filtrar-pascoa");
+  if (opcaoPascoa) {
+    opcaoPascoa.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Páscoa");
+    });
+  }
+
+  const opcaoDiaDasMaes = document.getElementById("filtrar-dia-das-maes");
+  if (opcaoDiaDasMaes) {
+    opcaoDiaDasMaes.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Dia das Mães");
+    });
+  }
+
+  const opcaoDiaDosNamorados = document.getElementById("filtrar-dia-dos-namorados");
+  if (opcaoDiaDosNamorados) {
+    opcaoDiaDosNamorados.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Dia dos Namorados");
+    });
+  }
+
+  const opcaoDiaDosPais = document.getElementById("filtrar-dia-dos-pais");
+  if (opcaoDiaDosPais) {
+    opcaoDiaDosPais.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Dia dos Pais");
+    });
+  }
+
+  const opcaoDiaDasCriancas = document.getElementById("filtrar-dia-das-criancas");
+  if (opcaoDiaDasCriancas) {
+    opcaoDiaDasCriancas.addEventListener("click", function () {
+      filtrarPorDataComemorativa("Dia das Crianças");
+    });
+  }
+
+  // Evento para remover o filtro ao clicar em "Tirar"
+  const opcaoTirar = document.getElementById("tirar-filtro");
+  if (opcaoTirar) {
+    opcaoTirar.addEventListener("click", function () {
+      const departamentos = document.querySelectorAll(".departamento");
+
+      departamentos.forEach(departamento => {
+        departamento.style.display = "block"; // Mostra todos os departamentos
+      });
+
+      modal.style.display = "none"; // Fecha o modal
+    });
+  }
+
+})
+.catch(error => console.error("Erro ao carregar o cabeçalho:", error));
 }
-
-    })
-    .catch(error => console.error("Erro ao carregar o cabeçalho:", error));
-}
-
 // Chama a função para carregar o cabeçalho
 carregarCabecalho();
 
@@ -301,7 +376,7 @@ document.getElementById('salvar-compra').addEventListener('click', function () {
     mensagem += `Descrição adicional: *${descricao}*\n`;
   }
 
-  mensagem += `\n🔔 *Seu pedido ficou no total de R$ ${precoTotal}*`;
+  mensagem += `\n *Seu pedido ficou no total de R$ ${precoTotal}*`;
 
   const numero = '+5511945124322';
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
