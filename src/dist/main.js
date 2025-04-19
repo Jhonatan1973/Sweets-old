@@ -221,6 +221,9 @@ function adicionarProdutos() {
 
 // Chama a função para adicionar os produtos organizados
 adicionarProdutos();
+
+let precoUnitario = 0;
+
 document.querySelectorAll('.comprar').forEach(botao => {
   botao.addEventListener('click', function () {
     const produto = this.closest('.produto');
@@ -230,60 +233,79 @@ document.querySelectorAll('.comprar').forEach(botao => {
 
     document.getElementById('produto-imagem').src = imagem;
     document.getElementById('produto-nome').textContent = nome;
-    document.getElementById('produto-preco').textContent = preco;
+    document.getElementById('quantidade-produtos').value = 1;
+
+    precoUnitario = parseFloat(preco.replace('R$', '').replace(',', '.'));
+    atualizarPrecoTotal();
 
     document.getElementById('modal-compra').style.display = 'flex';
   });
 });
 
-// Botão para fechar o modal
 document.getElementById('fechar-compra').addEventListener('click', function () {
   document.getElementById('modal-compra').style.display = 'none';
 });
 
-// Mostrar ou esconder o campo de endereço dependendo da escolha (Entrega ou Retirada)
 document.getElementById('entrega-retirada').addEventListener('change', function () {
   const campoEndereco = document.getElementById('campo-endereco');
-  if (this.value === 'entrega') {
-    campoEndereco.style.display = 'block';
-  } else {
-    campoEndereco.style.display = 'none';
-  }
+  campoEndereco.style.display = this.value === 'entrega' ? 'flex' : 'none';
 });
 
-// Botão salvar
+function atualizarPrecoTotal() {
+  const quantidade = parseInt(document.getElementById('quantidade-produtos').value) || 1;
+  const precoFinal = (precoUnitario * quantidade).toFixed(2).replace('.', ',');
+  document.getElementById('produto-preco').textContent = `R$ ${precoFinal}`;
+}
+
+document.getElementById('aumentar').addEventListener('click', function () {
+  const input = document.getElementById('quantidade-produtos');
+  input.value = parseInt(input.value) + 1;
+  atualizarPrecoTotal();
+});
+
+document.getElementById('diminuir').addEventListener('click', function () {
+  const input = document.getElementById('quantidade-produtos');
+  input.value = Math.max(1, parseInt(input.value) - 1);
+  atualizarPrecoTotal();
+});
+
+document.getElementById('quantidade-produtos').addEventListener('input', atualizarPrecoTotal);
+
 document.getElementById('salvar-compra').addEventListener('click', function () {
   const nomeComprador = document.getElementById('nome-comprador').value;
   const nomeProduto = document.getElementById('produto-nome').textContent;
   const formaPagamento = document.getElementById('forma-pagamento').value;
   const tipoEntrega = document.getElementById('entrega-retirada').value;
-  const dataEntrega = document.getElementById('data-entrega') ? document.getElementById('data-entrega').value : null;
-  const enderecoEntrega = document.getElementById('endereco') ? document.getElementById('endereco').value : null;
+  const enderecoEntrega = document.getElementById('endereco')?.value || '';
+  const numeroEndereco = document.getElementById('numero')?.value || '';
+  const quantidade = parseInt(document.getElementById('quantidade-produtos').value);
+  const descricao = document.getElementById('descricao-adicional').value;
 
-  // Verifica se todos os campos obrigatórios estão preenchidos
-  if (!nomeComprador || !dataEntrega || (tipoEntrega === 'entrega' && !enderecoEntrega)) {
-    alert('Por favor, preencha todos os campos!');
+  if (!nomeComprador || !formaPagamento || !quantidade || (tipoEntrega === 'entrega' && (!enderecoEntrega || !numeroEndereco))) {
+    alert('Por favor, preencha todos os campos obrigatórios!');
     return;
   }
 
-  // Monta a mensagem que será enviada pelo WhatsApp
-  let mensagem = `Olá, eu sou ${nomeComprador}, gostaria de encomendar o produto *${nomeProduto}*, a forma de pagamento será *${formaPagamento}* e a data de entrega seria *${dataEntrega}*.\n`;
-  
+  const precoTotal = (precoUnitario * quantidade).toFixed(2).replace('.', ',');
+
+  let mensagem = `Olá, eu sou ${nomeComprador}, gostaria de encomendar *${quantidade}* unidade(s) de *${nomeProduto}*.\n`;
+  mensagem += `Forma de pagamento: *${formaPagamento}*.\n`;
+
   if (tipoEntrega === 'entrega') {
-    mensagem += `Endereço de entrega: *${enderecoEntrega}*`;
+    mensagem += `Endereço de entrega: *${enderecoEntrega}, Nº ${numeroEndereco}*\n`;
   } else {
-    mensagem += `Opção de retirada selecionada.`;
+    mensagem += `Retirarei pessoalmente.\n`;
   }
 
-  const mensagemEncoded = encodeURIComponent(mensagem);
+  if (descricao) {
+    mensagem += `Descrição adicional: *${descricao}*\n`;
+  }
 
-  // Número do WhatsApp (com código do país)
-  const numeroWhatsapp = '+5511945124322';
-  const urlWhatsApp = `https://wa.me/${numeroWhatsapp}?text=${mensagemEncoded}`;
+  mensagem += `\n🔔 *Seu pedido ficou no total de R$ ${precoTotal}*`;
 
-  // Redireciona para o WhatsApp com a mensagem
-  window.open(urlWhatsApp, '_blank');
-
-  // Fecha o modal
+  const numero = '+5511945124322';
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
   document.getElementById('modal-compra').style.display = 'none';
 });
+
