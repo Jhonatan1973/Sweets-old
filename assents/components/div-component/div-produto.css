@@ -57,6 +57,6 @@
     }
 
     .produto {
-        width: 90%; /* Faz os produtos ficarem maiores no celular */
+        width: 60%; /* Faz os produtos ficarem maiores no celular */
     }
 }

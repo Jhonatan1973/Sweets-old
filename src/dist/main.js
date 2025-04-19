@@ -221,11 +221,9 @@ function adicionarProdutos() {
 
 // Chama a função para adicionar os produtos organizados
 adicionarProdutos();
-// Pega todos os botões com id="btncomprar" (mesmo repetido)
 document.querySelectorAll('.comprar').forEach(botao => {
   botao.addEventListener('click', function () {
     const produto = this.closest('.produto');
-
     const imagem = produto.querySelector('img').src;
     const nome = produto.querySelector('h3').textContent;
     const preco = produto.querySelector('.preco').textContent;
@@ -247,8 +245,24 @@ document.getElementById('fechar-compra').addEventListener('click', function () {
 document.getElementById('salvar-compra').addEventListener('click', function () {
   const nome = document.getElementById('produto-nome').textContent;
   const formaPagamento = document.getElementById('forma-pagamento').value;
+  const dataEntrega = document.getElementById('data-entrega').value;
 
-  alert(`Produto: ${nome}\nPagamento: ${formaPagamento}`);
+  // Verifica se o campo de data está preenchido
+  if (!dataEntrega) {
+    alert('Por favor, selecione uma data de entrega.');
+    return;
+  }
 
+  // Monta a mensagem que será enviada pelo WhatsApp
+  const mensagem = encodeURIComponent(`Olá, eu sou {digite seu nome}, gostaria de encomendar o produto *${nome}*, a forma de pagamento será *${formaPagamento}* e a data de entrega seria *${dataEntrega}*.`);
+
+  // Número do WhatsApp (com código do país)
+  const numeroWhatsapp = '+5511945124322';
+  const urlWhatsApp = `https://wa.me/${numeroWhatsapp}?text=${mensagem}`;
+
+  // Redireciona para o WhatsApp com a mensagem
+  window.open(urlWhatsApp, '_blank');
+
+  // Fecha o modal
   document.getElementById('modal-compra').style.display = 'none';
 });
