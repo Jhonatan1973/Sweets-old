@@ -8,154 +8,149 @@ function carregarCabecalho() {
       const headerContainer = document.getElementById('header-container');
       headerContainer.innerHTML = data;
 
-      // Evento de clique para mostrar/ocultar o menu
+      // Aqui dentro do THEN, depois de inserir o header no DOM
+      const modal = document.getElementById("modal");
+
+      // Mostrar/ocultar input
       const showInputButton = document.querySelector('.show-input-button');
       const inputDiv = document.querySelector('.input');
-
       if (showInputButton && inputDiv) {
-        showInputButton.addEventListener('click', function () {
+        showInputButton.addEventListener('click', () => {
           inputDiv.classList.toggle('active');
         });
       }
 
-      // Evento de clique para abrir o modal
+      // Abrir/fechar modal principal
       const openModalButton = document.getElementById("open-modal");
-      const modal = document.getElementById("modal");
       const closeModal = document.querySelector(".close");
-
       if (openModalButton && modal && closeModal) {
-        openModalButton.addEventListener("click", function () {
-          modal.style.display = "flex";
-        });
-
-        closeModal.addEventListener("click", function () {
-          modal.style.display = "none";
-        });
-
-        window.addEventListener("click", function (event) {
-          if (event.target === modal) {
-            modal.style.display = "none";
-          }
+        openModalButton.addEventListener("click", () => modal.style.display = "flex");
+        closeModal.addEventListener("click", () => modal.style.display = "none");
+        window.addEventListener("click", (event) => {
+          if (event.target === modal) modal.style.display = "none";
         });
       }
-      // Função para abrir o modal de feedback
-document.getElementById("feedback-btn").addEventListener("click", function () {
-  const feedbackModal = document.getElementById("feedback-modal");
-  feedbackModal.style.display = "block";
-});
 
-// Função para fechar o modal de feedback
-document.querySelector(".close-feedback").addEventListener("click", function () {
-  const feedbackModal = document.getElementById("feedback-modal");
-  feedbackModal.style.display = "none";
-});
-
-// Fechar o modal se o usuário clicar fora dele
-window.addEventListener("click", function (event) {
-  const feedbackModal = document.getElementById("feedback-modal");
-  if (event.target === feedbackModal) {
-    feedbackModal.style.display = "none";
-  }
-});
-
-// Função para enviar o feedback (aqui você pode implementar o envio para um servidor, por exemplo)
-document.getElementById("feedback-form").addEventListener("submit", function (event) {
-  event.preventDefault(); // Impede o envio do formulário padrão
-
-  const feedbackText = document.getElementById("feedback-text").value;
-  if (feedbackText.trim() !== "") {
-    console.log("Feedback recebido:", feedbackText); // Aqui você pode fazer algo com o feedback, como enviar para um servidor
-    alert("Obrigado pelo seu feedback!");
-    document.getElementById("feedback-modal").style.display = "none"; // Fecha o modal após o envio
-  } else {
-    alert("Por favor, deixe seu feedback antes de enviar.");
-  }
-});
-
-  // Função para filtrar os departamentos com base na data comemorativa
-  function filtrarPorDataComemorativa(dataComemorativa) {
-    const departamentos = document.querySelectorAll(".departamento");
-
-    departamentos.forEach(departamento => {
-      const titulo = departamento.querySelector("h2").textContent;
-
-      // Exibe o departamento apenas se o título corresponder à data comemorativa
-      if (titulo === dataComemorativa) {
-        departamento.style.display = "block";
-      } else {
-        departamento.style.display = "none";
-      }
-    });
-
-    modal.style.display = "none"; // Fecha o modal após o filtro
-  }
-
-  // Evento para filtrar os produtos ao clicar em uma data comemorativa
-  const opcaoDiaDasMulheres = document.getElementById("filtrar-dia-das-mulheres");
-  if (opcaoDiaDasMulheres) {
-    opcaoDiaDasMulheres.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Dia das Mulheres");
-    });
-  }
-
-  const opcaoPascoa = document.getElementById("filtrar-pascoa");
-  if (opcaoPascoa) {
-    opcaoPascoa.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Páscoa");
-    });
-  }
-
-  const opcaoDiaDasMaes = document.getElementById("filtrar-dia-das-maes");
-  if (opcaoDiaDasMaes) {
-    opcaoDiaDasMaes.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Dia das Mães");
-    });
-  }
-
-  const opcaoDiaDosNamorados = document.getElementById("filtrar-dia-dos-namorados");
-  if (opcaoDiaDosNamorados) {
-    opcaoDiaDosNamorados.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Dia dos Namorados");
-    });
-  }
-
-  const opcaoDiaDosPais = document.getElementById("filtrar-dia-dos-pais");
-  if (opcaoDiaDosPais) {
-    opcaoDiaDosPais.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Dia dos Pais");
-    });
-  }
-
-  const opcaoDiaDasCriancas = document.getElementById("filtrar-dia-das-criancas");
-  if (opcaoDiaDasCriancas) {
-    opcaoDiaDasCriancas.addEventListener("click", function () {
-      filtrarPorDataComemorativa("Dia das Crianças");
-    });
-  }
-
-  // Evento para remover o filtro ao clicar em "Tirar"
-  const opcaoTirar = document.getElementById("tirar-filtro");
-  if (opcaoTirar) {
-    opcaoTirar.addEventListener("click", function () {
-      const departamentos = document.querySelectorAll(".departamento");
-
-      departamentos.forEach(departamento => {
-        departamento.style.display = "block"; // Mostra todos os departamentos
+      // Modal de feedback
+      document.getElementById("feedback-btn")?.addEventListener("click", () => {
+        document.getElementById("feedback-modal").style.display = "block";
       });
 
-      modal.style.display = "none"; // Fecha o modal
-    });
-  }
+      document.querySelector("#close-feedback")?.addEventListener("click", () => {
+        document.getElementById("feedback-modal").style.display = "none";
+      });
 
-})
-.catch(error => console.error("Erro ao carregar o cabeçalho:", error));
+      window.addEventListener("click", (event) => {
+        const feedbackModal = document.getElementById("feedback-modal");
+        if (event.target === feedbackModal) {
+          feedbackModal.style.display = "none";
+        }
+      });
+// Modal de Contato
+document.getElementById("open-contato")?.addEventListener("click", () => {
+  document.getElementById("modal-contato").style.display = "block";
+});
+
+document.getElementById("close-contato")?.addEventListener("click", () => {
+  document.getElementById("modal-contato").style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  const modalContato = document.getElementById("modal-contato");
+  if (event.target === modalContato) {
+    modalContato.style.display = "none";
+  }
+});
+
+      document.getElementById("feedback-form")?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const feedbackText = document.getElementById("feedback-text").value.trim();
+        if (feedbackText) {
+          console.log("Feedback recebido:", feedbackText);
+          alert("Obrigado pelo seu feedback!");
+          document.getElementById("feedback-modal").style.display = "none";
+        } else {
+          alert("Por favor, deixe seu feedback antes de enviar.");
+        }
+      });
+
+      // Filtrar por data comemorativa
+      function filtrarPorDataComemorativa(dataComemorativa) {
+        document.querySelectorAll(".departamento").forEach(departamento => {
+          const titulo = departamento.querySelector("h2").textContent;
+          departamento.style.display = titulo === dataComemorativa ? "block" : "none";
+        });
+        modal.style.display = "none";
+      }
+
+      function adicionarEventosDeFiltro() {
+        const botoesFiltro = [
+          { id: "filtrar-dia-das-mulheres", titulo: "Dia das Mulheres" },
+          { id: "filtrar-pascoa", titulo: "Páscoa" },
+          { id: "filtrar-dia-das-maes", titulo: "Dia das Mães" },
+          { id: "filtrar-dia-dos-namorados", titulo: "Dia dos Namorados" },
+          { id: "filtrar-dia-dos-pais", titulo: "Dia dos Pais" },
+          { id: "filtrar-dia-das-criancas", titulo: "Dia das Crianças" }
+        ];
+
+        botoesFiltro.forEach(({ id, titulo }) => {
+          document.getElementById(id)?.addEventListener("click", () => filtrarPorDataComemorativa(titulo));
+        });
+
+        document.getElementById("tirar-filtro")?.addEventListener("click", () => {
+          document.querySelectorAll(".departamento").forEach(departamento => {
+            departamento.style.display = "block";
+          });
+          modal.style.display = "none";
+        });
+      }
+
+      adicionarEventosDeFiltro();
+    })
+    .catch(error => console.error("Erro ao carregar o cabeçalho:", error));
 }
+
 // Chama a função para carregar o cabeçalho
 carregarCabecalho();
 
 
+
 // Dados dos produtos organizados por departamento
 const produtosPorDepartamento = {
+  "Doces": [
+    {
+      imagem: "/assents/img/barra trufada.jpeg",
+      nome: "barra trufada",
+      descricao: "",
+      preco: "R$ 24,00"
+    },
+    {
+      imagem: "/assents/img/brigadeiro.jpeg",
+      nome: "Brigadeiro e beijinho cento",
+      descricao: "Cone crocante recheado com brigadeiro gourmet.",
+      preco: "R$ 85,00"
+    },
+    {
+      imagem: "/assents/img/",
+      nome: "Super trufa",
+      descricao: "Trufa gostosa.",
+      preco: "R$ 5,00"
+    }
+  ],
+  "Mousses": [
+    {
+      imagem: "/assents/img/WhatsApp Image 2025-03-12 at 17.33.19.jpeg",
+      nome: "Mousse de Maracujá",
+      descricao: "Um delicioso mousse de Maracujá com chocolate nobre por cima.",
+      preco: "R$ 8,00"
+    },
+    {
+      imagem: "/assents/img/musse-limao.jpeg",
+      nome: "Mousse de Limão",
+      descricao: "Mousse de limão com raspas das frutas por cima.",
+      preco: "R$ 8,00"
+    }
+  ],
   "Páscoa": [
     {
       imagem: "/assents/img/Ceurinha chocolatudo.jpeg",
@@ -217,28 +212,6 @@ const produtosPorDepartamento = {
       descricao: "",
       preco: "R$ 22,00"
     },
-  ],
-  "Mousses": [
-    {
-      imagem: "/assents/img/WhatsApp Image 2025-03-12 at 17.33.19.jpeg",
-      nome: "Mousse de Maracujá",
-      descricao: "Um delicioso mousse de Maracujá com chocolate nobre por cima.",
-      preco: "R$ 8,00"
-    },
-    {
-      imagem: "/assents/img/musse-limao.jpeg",
-      nome: "Mousse de Limão",
-      descricao: "Mousse de limão com raspas das frutas por cima.",
-      preco: "R$ 8,00"
-    }
-  ],
-  "Bombons": [
-    {
-      imagem: "/assents/img/bombom.jpg",
-      nome: "Bombom Trufado",
-      descricao: "Chocolate recheado com ganache especial.",
-      preco: "R$ 3,00"
-    },
     {
       imagem: "/assents/img/barra trufada.jpeg",
       nome: "barra trufada",
@@ -246,14 +219,7 @@ const produtosPorDepartamento = {
       preco: "R$ 24,00"
     },
   ],
-  "Cones": [
-    {
-      imagem: "/assents/img/cone.jpg",
-      nome: "Cone de Chocolate",
-      descricao: "Cone crocante recheado com brigadeiro gourmet.",
-      preco: "R$ 6,00"
-    }
-  ]
+
 };
 
 // Função para adicionar os produtos por departamento
