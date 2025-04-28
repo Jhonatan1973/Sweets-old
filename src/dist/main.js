@@ -135,18 +135,36 @@ const produtosPorDepartamento = {
       nome: "Super trufa",
       descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
       preco: "R$ 5,00"
+    },
+    {
+      imagem: "/assents/img/cone-trufado.jpeg",
+      nome: "Cone trufado",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim, oreo.",
+      preco: "R$ 9,00"
+    },
+    {
+      imagem: "/assents/img/cone-trufado-nutella.jpeg",
+      nome: "Cone trufado de ninho com nutella",
+      descricao: "",
+      preco: "R$ 12,00"
+    },
+    {
+      imagem: "/assents/img/sacao-de-bombons.jpeg",
+      nome: "Sacão de bombons recheados.",
+      descricao: "",
+      preco: "R$ 50,00"
     }
   ],
   "Mousses": [
     {
-      imagem: "/assents/img/WhatsApp Image 2025-03-12 at 17.33.19.jpeg",
-      nome: "Mousse de Maracujá",
+      imagem: "/assents/img/musse-de-maracuja.jpeg",
+      nome: "Mousse de Maracujá.",
       descricao: "",
       preco: "R$ 8,00"
     },
     {
-      imagem: "/assents/img/musse-limao.jpeg",
-      nome: "Mousse de Limão",
+      imagem: "/assents/img/musse-de-limao.jpeg",
+      nome: "Mousse de Limão.",
       descricao: "",
       preco: "R$ 8,00"
     }
@@ -154,70 +172,83 @@ const produtosPorDepartamento = {
   "Páscoa": [
     {
       imagem: "/assents/img/Ceurinha chocolatudo.jpeg",
-      nome: "Ceurinha chocolatudo",
-      descricao: "",
-      preco: "R$ 16,00"
-    },
-    {
-      imagem: "/assents/img/cenourinha-recheada.jpeg",
-      nome: "Ceurinha recheada",
+      nome: "Ceurinha chocolatudo.",
       descricao: "",
       preco: "R$ 17,00"
     },
     {
+      imagem: "/assents/img/cenourinha-recheada.jpeg",
+      nome: "Ceurinha recheada.",
+      descricao: "",
+      preco: "R$ 16,00"
+    },
+    {
       imagem: "/assents/img/coelinho-recheado.jpeg",
-      nome: "Coelinho chocolatudo",
+      nome: "Coelinho recheado.",
+      descricao: "",
+      preco: "R$ 15,00"
+    },
+    {
+      imagem: "/assents/img/coelinho-chocolatudo.jpeg",
+      nome: "Coelinho chocolatudo.",
       descricao: "",
       preco: "R$ 16,00"
     },
     {
       imagem: "/assents/img/ovo-trufado-500g.jpeg",
       nome: "Ovo trufado - 500g",
-      descricao: "",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
       preco: "R$ 80,00"
     },
+
     {
-      imagem: "/assents/img/coelinho-chocolatudo.jpeg",
-      nome: "Coelinho chocolatudo",
-      descricao: "",
-      preco: "R$ 16,00"
-    },
-    {
-      imagem: "/assents/img/ovo-350g.jpeg",
-      nome: "Ovo tradicional meio amargo ou ao leite - 350g",
+      imagem: "/assents/img/ovo-de-350g.jpeg",
+      nome: "Ovo tradicional 350g.",
       descricao: "",
       preco: "R$ 62,00"
     },
     {
-      imagem: "/assents/img/ovo-250g.jpeg",
-      nome: "Ovo tradicional meio amargo ou ao leite - 250g",
+      imagem: "/assents/img/ovo-de-250g.jpeg",
+      nome: "Ovo tradicional 250g.",
       descricao: "",
       preco: "R$ 48,00"
     },
     {
       imagem: "/assents/img/500g.jpeg",
-      nome: "Ovo tradicional meio amargo ou ao leite - 500g",
+      nome: "Ovo tradicional 500g.",
       descricao: "",
       preco: "R$ 85,00"
     },
     {
       imagem: "/assents/img/ovo-de-colher.jpeg",
-      nome: "Ovo de colher: de 350g à 385g",
+      nome: "Ovo de colher: de 350g à 385g.",
       descricao: "",
       preco: "R$ 83,00"
     },
     {
       imagem: "/assents/img/ovo-raso-recheado.jpeg",
-      nome: "Ovo raso trufado ao leite ou meio amargo",
+      nome: "Ovo raso trufado.",
       descricao: "",
-      preco: "R$ 22,00"
+      preco: "R$ 25,00"
     },
     {
       imagem: "/assents/img/barra-trufada.jpeg",
       nome: "Barra trufada",
-      descricao: "",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
       preco: "R$ 24,00"
     },
+    {
+      imagem: "/assents/img/sacao-de-bombons.jpeg",
+      nome: "Sacão de bombons recheados.",
+      descricao: "",
+      preco: "R$ 50,00"
+    },
+    {
+      imagem: "/assents/img/saquinhos-de-bombons.jpeg",
+      nome: "Saquinho de bombons recheados.",
+      descricao: "",
+      preco: "R$ 8,00"
+    }
   ],
 
 };
@@ -247,7 +278,7 @@ function adicionarProdutos() {
       divProduto.innerHTML = `
         <img src="${produto.imagem}" alt="${produto.nome}">
         <h3>${produto.nome}</h3>
-        <p>${produto.descricao}</p>
+        <p class="descricao-p">${produto.descricao}</p>
         <span class="preco">${produto.preco}</span>
         <button class="comprar">Comprar</button>
       `;
