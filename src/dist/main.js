@@ -119,21 +119,21 @@ carregarCabecalho();
 const produtosPorDepartamento = {
   "Doces": [
     {
-      imagem: "/assents/img/barra trufada.jpeg",
-      nome: "barra trufada",
-      descricao: "",
+      imagem: "/assents/img/barra-trufada.jpeg",
+      nome: "Barra trufada",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
       preco: "R$ 24,00"
     },
     {
-      imagem: "/assents/img/brigadeiro.jpeg",
-      nome: "Brigadeiro e beijinho cento",
-      descricao: "Cone crocante recheado com brigadeiro gourmet.",
-      preco: "R$ 85,00"
+      imagem: "/assents/img/brigadeiro-beijinho-cento.jpeg",
+      nome: "Cento de brigadeiro ou beijinho.",
+      descricao: "",
+      preco: "R$ 95,00"
     },
     {
-      imagem: "/assents/img/",
+      imagem: "/assents/img/super-trufa.jpeg",
       nome: "Super trufa",
-      descricao: "Trufa gostosa.",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
       preco: "R$ 5,00"
     }
   ],
@@ -141,13 +141,13 @@ const produtosPorDepartamento = {
     {
       imagem: "/assents/img/WhatsApp Image 2025-03-12 at 17.33.19.jpeg",
       nome: "Mousse de Maracujá",
-      descricao: "Um delicioso mousse de Maracujá com chocolate nobre por cima.",
+      descricao: "",
       preco: "R$ 8,00"
     },
     {
       imagem: "/assents/img/musse-limao.jpeg",
       nome: "Mousse de Limão",
-      descricao: "Mousse de limão com raspas das frutas por cima.",
+      descricao: "",
       preco: "R$ 8,00"
     }
   ],
@@ -159,25 +159,25 @@ const produtosPorDepartamento = {
       preco: "R$ 16,00"
     },
     {
-      imagem: "/assents/img/cenourinha recheada.jpeg",
+      imagem: "/assents/img/cenourinha-recheada.jpeg",
       nome: "Ceurinha recheada",
       descricao: "",
       preco: "R$ 17,00"
     },
     {
-      imagem: "/assents/img/coelinho chocolatudo.jpeg",
+      imagem: "/assents/img/coelinho-recheado.jpeg",
       nome: "Coelinho chocolatudo",
       descricao: "",
       preco: "R$ 16,00"
     },
     {
-      imagem: "/assents/img/ovo trufado.jpeg",
+      imagem: "/assents/img/ovo-trufado-500g.jpeg",
       nome: "Ovo trufado - 500g",
       descricao: "",
       preco: "R$ 80,00"
     },
     {
-      imagem: "/assents/img/coelinho recheado.jpeg",
+      imagem: "/assents/img/coelinho-chocolatudo.jpeg",
       nome: "Coelinho chocolatudo",
       descricao: "",
       preco: "R$ 16,00"
@@ -195,26 +195,26 @@ const produtosPorDepartamento = {
       preco: "R$ 48,00"
     },
     {
-      imagem: "/assents/img/ovo-500g.jpeg",
+      imagem: "/assents/img/500g.jpeg",
       nome: "Ovo tradicional meio amargo ou ao leite - 500g",
       descricao: "",
       preco: "R$ 85,00"
     },
     {
-      imagem: "/assents/img/ovo-colher-350g.jpeg",
+      imagem: "/assents/img/ovo-de-colher.jpeg",
       nome: "Ovo de colher: de 350g à 385g",
       descricao: "",
       preco: "R$ 83,00"
     },
     {
-      imagem: "/assents/img/ovo-raso.jpeg",
+      imagem: "/assents/img/ovo-raso-recheado.jpeg",
       nome: "Ovo raso trufado ao leite ou meio amargo",
       descricao: "",
       preco: "R$ 22,00"
     },
     {
-      imagem: "/assents/img/barra trufada.jpeg",
-      nome: "barra trufada",
+      imagem: "/assents/img/barra-trufada.jpeg",
+      nome: "Barra trufada",
       descricao: "",
       preco: "R$ 24,00"
     },
