@@ -35,7 +35,15 @@
             <option value="pix">Pix</option>
             <option value="dinheiro">Dinheiro</option>
           </select><br><br>
-      
+          <div id="mensagem-pix" style="display: none; margin-top: 10px; padding: 1rem; background-color: #e0f7e9; border: 2px solid #34d399; border-radius: 0.5rem; font-size: 1rem;">
+            Chave Pix: 
+            <span id="pix-chave" style="font-weight: bold;">+5511942918632</span><br>
+            <button onclick="copiarPix()" style="margin-top: 10px; padding: 0.5rem 1rem; background-color: #10b981; color: white; border: none; border-radius: 0.375rem; cursor: pointer;"
+              onmouseover="this.style.backgroundColor='#059669'" 
+              onmouseout="this.style.backgroundColor='#10b981'">
+              Copiar
+            </button>
+          </div>
           <label for="entrega-retirada" style="font-size: 1rem; font-weight: 600; color: rgba(0, 0, 0, 1); margin-top: 1.5rem; display: block;">Entrega ou Retirada?</label>
           <select id="entrega-retirada" style="margin-top: 10px; padding: 0.75rem; border-radius: 0.375rem; border: 2px solid rgba(229, 231, 235, 1); width: 100%; background-color: #F7F7F7; font-size: 1rem; transition: border 0.2s;">
             <option value="">Selecione...</option>
@@ -67,5 +75,26 @@
       </div>
       
     <script src="src/dist/main.js" defer></script>
+    <script>const selectPagamento = document.getElementById('forma-pagamento');
+      const mensagemPix = document.getElementById('mensagem-pix');
+      
+      selectPagamento.addEventListener('change', function () {
+        if (this.value === 'pix') {
+          mensagemPix.style.display = 'block';
+        } else {
+          mensagemPix.style.display = 'none';
+        }
+      });
+      
+      function copiarPix() {
+        const chave = document.getElementById('pix-chave').innerText;
+        navigator.clipboard.writeText(chave)
+          .then(() => {
+            alert('Chave Pix copiada!');
+          })
+          .catch(() => {
+            alert('Erro ao copiar chave Pix.');
+          });
+      }</script>
 </body>
 </html>
