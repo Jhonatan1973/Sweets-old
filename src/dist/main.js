@@ -120,8 +120,8 @@ const produtosPorDepartamento = {
   "Doces": [
     {
       imagem: "/assents/img/barra-trufada.jpeg",
-      nome: "Barra trufada",
-      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
+      nome: "Barra Trufada",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, morango, paçoca, amendoim.",
       preco: "R$ 24,00"
     },
     {
@@ -131,20 +131,26 @@ const produtosPorDepartamento = {
       preco: "R$ 95,00"
     },
     {
-      imagem: "/assents/img/super-trufa.jpeg",
-      nome: "Super trufa",
-      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
+      imagem: "/assents/img/super-trufaa.jpeg",
+      nome: "Super Trufa",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, morango, paçoca, amendoim.",
       preco: "R$ 5,00"
+    },
+    {
+      imagem: "/assents/img/trufa-nutela.jpeg",
+      nome: "Super Trufa de Nutella",
+      descricao: "",
+      preco: "R$ 8,00"
     },
     {
       imagem: "/assents/img/cone-trufado.jpeg",
       nome: "Cone trufado",
-      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim, oreo.",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, morango, paçoca, amendoim, oreo.",
       preco: "R$ 9,00"
     },
     {
       imagem: "/assents/img/cone-trufado-nutella.jpeg",
-      nome: "Cone trufado de ninho com nutella",
+      nome: "Cone trufado de Ninho com Nutella",
       descricao: "",
       preco: "R$ 12,00"
     },
@@ -197,7 +203,7 @@ const produtosPorDepartamento = {
     {
       imagem: "/assents/img/ovo-trufado-500g.jpeg",
       nome: "Ovo trufado - 500g",
-      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, morango, paçoca, amendoim.",
       preco: "R$ 80,00"
     },
 
@@ -234,7 +240,7 @@ const produtosPorDepartamento = {
     {
       imagem: "/assents/img/barra-trufada.jpeg",
       nome: "Barra trufada",
-      descricao: "Sabores: Maracujá, brigadeiro, prestígio, mornago, paçóca, amenduim.",
+      descricao: "Sabores: Maracujá, brigadeiro, prestígio, morango, paçoca, amendoim.",
       preco: "R$ 24,00"
     },
     {
@@ -375,7 +381,7 @@ document.getElementById('salvar-compra').addEventListener('click', function () {
 
   mensagem += `\n *Seu pedido ficou no total de R$ ${precoTotal}*`;
 
-  const numero = '+5511945124322';
+  const numero = '+5511942918632';
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, '_blank');
   document.getElementById('modal-compra').style.display = 'none';
