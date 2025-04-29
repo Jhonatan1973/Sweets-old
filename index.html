@@ -6,7 +6,7 @@
     <title>Ester Doces</title>
     <link rel="stylesheet" href="assents/components/div-component/div-produto.css">
     <link rel="stylesheet" href="assents/components/header-component/header-principal.css">
-    <link rel="icon" type="image/x-icon" href="/assents/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assents/img/icon-loja-de-doces-removebg-preview.png">
 </head>
 <body>
 
@@ -30,14 +30,15 @@
           <input type="text" id="nome-comprador" placeholder="Digite seu nome" style="margin-top: 10px; padding: 0.75rem; border-radius: 0.375rem; border: 2px solid rgba(229, 231, 235, 1); width: 100%; background-color: #F7F7F7; font-size: 1rem; transition: border 0.2s;">
       
           <label for="forma-pagamento" style="font-size: 1rem; font-weight: 600; color: rgba(0, 0, 0, 1); margin-top: 1.5rem; display: block;">Forma de pagamento:</label>
-          <select id="forma-pagamento" style="margin-top: 10px; padding: 0.75rem; border-radius: 0.375rem; border: 2px solid rgba(229, 231, 235, 1); width: 100%; background-color: #F7F7F7; font-size: 1rem; transition: border 0.2s;">
-            <option value="">Selecione...</option>
-            <option value="pix">Pix</option>
-            <option value="dinheiro">Dinheiro</option>
-          </select><br><br>
+          <select id="forma-pagamento" required
+          style="margin-top: 10px; padding: 0.75rem; border-radius: 0.375rem; border: 2px solid rgba(229, 231, 235, 1); width: 100%; background-color: #F7F7F7; font-size: 1rem; transition: border 0.2s;">
+          <option value="">Selecione...</option>
+          <option value="pix">Pix</option>
+          <option value="dinheiro">Dinheiro</option>
+        </select><br><br>
           <div id="mensagem-pix" style="display: none; margin-top: 10px; padding: 1rem; background-color: #e0f7e9; border: 2px solid #34d399; border-radius: 0.5rem; font-size: 1rem;">
             Chave Pix: 
-            <span id="pix-chave" style="font-weight: bold;">+5511942918632</span><br>
+            <span id="pix-chave" style="font-weight: bold; color: #12865f;">11942918632</span><br>
             <button onclick="copiarPix()" style="margin-top: 10px; padding: 0.5rem 1rem; background-color: #10b981; color: white; border: none; border-radius: 0.375rem; cursor: pointer;"
               onmouseover="this.style.backgroundColor='#059669'" 
               onmouseout="this.style.backgroundColor='#10b981'">
@@ -96,5 +97,13 @@
             alert('Erro ao copiar chave Pix.');
           });
       }</script>
+      <script>  const select = document.getElementById("forma-pagamento");
+
+        select.addEventListener("click", function () {
+          const primeiraOpcao = select.options[0];
+          if (primeiraOpcao.value === "") {
+            primeiraOpcao.disabled = true; // impede que volte a selecionar "Selecione..."
+          }
+        });</script>
 </body>
 </html>

@@ -152,7 +152,7 @@ const produtosPorDepartamento = {
       imagem: "/assents/img/cone-trufado-nutella.jpeg",
       nome: "Cone trufado de Ninho com Nutella",
       descricao: "",
-      preco: "R$ 12,00"
+      preco: "R$ 10,00"
     },
     {
       imagem: "/assents/img/sacao-de-bombons.jpeg",
