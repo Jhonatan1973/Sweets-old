@@ -1,17 +1,11 @@
 "use strict";
-
-// Função para carregar o cabeçalho dinamicamente
 function carregarCabecalho() {
   fetch('assents/components/header.html')
     .then(response => response.text())
     .then(data => {
       const headerContainer = document.getElementById('header-container');
       headerContainer.innerHTML = data;
-
-      // Aqui dentro do THEN, depois de inserir o header no DOM
       const modal = document.getElementById("modal");
-
-      // Mostrar/ocultar input
       const showInputButton = document.querySelector('.show-input-button');
       const inputDiv = document.querySelector('.input');
       if (showInputButton && inputDiv) {
@@ -19,8 +13,6 @@ function carregarCabecalho() {
           inputDiv.classList.toggle('active');
         });
       }
-
-      // Abrir/fechar modal principal
       const openModalButton = document.getElementById("open-modal");
       const closeModal = document.querySelector(".close");
       if (openModalButton && modal && closeModal) {
@@ -30,8 +22,6 @@ function carregarCabecalho() {
           if (event.target === modal) modal.style.display = "none";
         });
       }
-
-      // Modal de feedback
       document.getElementById("feedback-btn")?.addEventListener("click", () => {
         document.getElementById("feedback-modal").style.display = "block";
       });
@@ -46,7 +36,7 @@ function carregarCabecalho() {
           feedbackModal.style.display = "none";
         }
       });
-// Modal de Contato
+
 document.getElementById("open-contato")?.addEventListener("click", () => {
   document.getElementById("modal-contato").style.display = "block";
 });
@@ -73,8 +63,6 @@ window.addEventListener("click", (event) => {
           alert("Por favor, deixe seu feedback antes de enviar.");
         }
       });
-
-      // Filtrar por data comemorativa
       function filtrarPorDataComemorativa(dataComemorativa) {
         document.querySelectorAll(".departamento").forEach(departamento => {
           const titulo = departamento.querySelector("h2").textContent;
@@ -110,14 +98,17 @@ window.addEventListener("click", (event) => {
     .catch(error => console.error("Erro ao carregar o cabeçalho:", error));
 }
 
-// Chama a função para carregar o cabeçalho
 carregarCabecalho();
 
 
-
-// Dados dos produtos organizados por departamento
 const produtosPorDepartamento = {
   "Doces": [
+        {
+      imagem: "/assents/img/Cento-de-Musses.jpeg",
+      nome: "Cento de Mousses",
+      descricao: "Sabores: Maracujá, Morango, Limão, ou à escolha do cliente.",
+      preco: "R$ 140,00"
+    },
     {
       imagem: "/assents/img/barra-trufada.jpeg",
       nome: "Barra Trufada",
@@ -154,11 +145,23 @@ const produtosPorDepartamento = {
       descricao: "",
       preco: "R$ 10,00"
     },
+        {
+      imagem: "/assents/img/cone-nutella.jpeg",
+      nome: "Cone trufado de Nutella pura.",
+      descricao: "",
+      preco: "R$ 12,00"
+    },
     {
       imagem: "/assents/img/sacao-de-bombons.jpeg",
       nome: "Sacão de bombons recheados.",
       descricao: "",
       preco: "R$ 50,00"
+    },
+        {
+      imagem: "/assents/img/saquinho-doces-pequeno.jpeg",
+      nome: "Saquinho de bombons recheados.",
+      descricao: "",
+      preco: "R$ 8,00"
     }
   ],
   "Mousses": [
@@ -256,24 +259,35 @@ const produtosPorDepartamento = {
       preco: "R$ 8,00"
     }
   ],
+  "Dia das Mães": [
+    {
+      imagem: "/assents/img/caneca-mae-branca.jpeg",
+      nome: "Caneca de Vidro.",
+      descricao: "Com bombons de chocolate nobre.",
+      preco: "R$40,00"
+    },
+        {
+      imagem: "/assents/img/caneca-mae-larnaja.jpeg",
+      nome: "Caneca de Plástico.",
+      descricao: "Com bombons de chocolate nobre.",
+      preco: "R$35,00"
+    }
+  ]
 
 };
 
-// Função para adicionar os produtos por departamento
 function adicionarProdutos() {
   const produtosContainer = document.getElementById('produtos-container');
 
   for (const departamento in produtosPorDepartamento) {
-    // Criando a seção do departamento
+  
     const section = document.createElement('section');
     section.classList.add('departamento');
 
-    // Criando o título do departamento
     const titulo = document.createElement('h2');
     titulo.textContent = departamento;
     section.appendChild(titulo);
 
-    // Criando o container dos produtos
     const produtosDiv = document.createElement('div');
     produtosDiv.classList.add('produtos');
 
@@ -297,7 +311,6 @@ function adicionarProdutos() {
   }
 }
 
-// Chama a função para adicionar os produtos organizados
 adicionarProdutos();
 
 let precoUnitario = 0;
