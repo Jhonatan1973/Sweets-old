@@ -107,7 +107,7 @@ const produtosPorDepartamento = {
       imagem: "/assents/img/Cento-de-Musses.jpeg",
       nome: "Cento de Mousses",
       descricao: "Sabores: Maracujá, Morango, Limão, ou à escolha do cliente.",
-      preco: "R$ 140,00"
+      preco: "R$ 120,00"
     },
     {
       imagem: "/assents/img/barra-trufada.jpeg",
@@ -272,6 +272,45 @@ const produtosPorDepartamento = {
       descricao: "Com bombons de chocolate nobre.",
       preco: "R$35,00"
     }
+  ],
+   "Dia dos Namorados": [
+    {
+      imagem: "/assents/img/caneca-personalizada.jpeg",
+      nome: "Caneca personalizada.",
+      descricao: "Acompanha uma caneca, um cone e bombons recheados.",
+      preco: "R$45,00"
+    },
+        {
+      imagem: "/assents/img/super-caixa.jpeg",
+      nome: "Super caixa.",
+      descricao: "Acompanha 1 lata de refrigerante, 2 bolinhos da preferência do cliente, um coração recheado (cerca de 400g), dois cones e bombons trufados.",
+      preco: "R$70,00"
+    },
+            {
+      imagem: "/assents/img/cx-do-amor.jpeg",
+      nome: "Caixa do amor.",
+      descricao: "Acompanha 3 cones e bombons recheados.",
+      preco: "R$45,00"
+    },
+            {
+      imagem: "/assents/img/caixa-com-frase-18-rosa.jpeg",
+      nome: "Caixa personalizada com frase.",
+      descricao: "Acompanha seis brigadeiros ou beijinhos com a escrita “te amo” feita em chocolate nobre.",
+      preco: "R$18,00"
+    },
+                {
+      imagem: "/assents/img/caixa-com-frase-18-vermelho.jpeg",
+      nome: "Caixa personalizada com frase.",
+      descricao: "Acompanha seis brigadeiros ou beijinhos com a escrita “te amo” feita em chocolate nobre.",
+      preco: "R$18,00"
+    },
+            {
+      imagem: "/assents/img/caixa-com-frase-15.jpeg",
+      nome: "Caixa personalizada com frase.",
+      descricao: "Acompanha seis brigadeiros ou beijinhos com a escrita “te amo” feita em chocolate nobre.",
+      preco: "R$15,00"
+    },
+    
   ]
 
 };
