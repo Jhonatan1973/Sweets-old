@@ -78,7 +78,8 @@ window.addEventListener("click", (event) => {
           { id: "filtrar-dia-das-maes", titulo: "Dia das Mães" },
           { id: "filtrar-dia-dos-namorados", titulo: "Dia dos Namorados" },
           { id: "filtrar-dia-dos-pais", titulo: "Dia dos Pais" },
-          { id: "filtrar-dia-das-criancas", titulo: "Dia das Crianças" }
+          { id: "filtrar-dia-das-criancas", titulo: "Dia das Crianças" },
+          { id: "filtrar-bolos", titulo: "bolos" }
         ];
 
         botoesFiltro.forEach(({ id, titulo }) => {
@@ -157,11 +158,17 @@ const produtosPorDepartamento = {
       descricao: "",
       preco: "R$ 50,00"
     },
-        {
+      {
       imagem: "/assents/img/saquinho-doces-pequeno.jpeg",
       nome: "Saquinho de bombons recheados.",
       descricao: "",
       preco: "R$ 8,00"
+    },
+      {
+      imagem: "/assents/img/morango-amor.jpg",
+      nome: "Morango do amor.",
+      descricao: "",
+      preco: "R$ 10,00"
     }
   ],
   "Mousses": [
@@ -177,6 +184,22 @@ const produtosPorDepartamento = {
       descricao: "",
       preco: "R$ 8,00"
     }
+  ],
+    "Bolos": [
+    {
+      imagem: "/assents/img/bolo-morango.jpg",
+      nome: "Bolo de chocolate com morangos.",
+      descricao: "",
+      preco: "R$ 65,00"
+    },
+  ],
+    "Sobremesas": [
+    {
+      imagem: "/assents/img/sobremesa-uva.jpg",
+      nome: "Sobremesa de uva.",
+      descricao: "Uvas verdes sem semente, com uma camada de brigadeiro de leite ninho e ganache de chocolate nobre meio amargo por cima.",
+      preco: "R$ 42,00"
+    },
   ],
   "Páscoa": [
     {
