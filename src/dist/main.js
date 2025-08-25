@@ -166,7 +166,7 @@ const produtosPorDepartamento = {
     },
       {
       imagem: "/assents/img/morango-amor.jpg",
-      nome: "Morango do amor.",
+      nome: "Morango do amor. (uni)",
       descricao: "",
       preco: "R$ 10,00"
     }
@@ -174,13 +174,13 @@ const produtosPorDepartamento = {
   "Mousses": [
     {
       imagem: "/assents/img/musse-de-maracuja.jpeg",
-      nome: "Mousse de Maracujá.",
+      nome: "Mousse de Maracujá. (uni)",
       descricao: "",
       preco: "R$ 8,00"
     },
     {
       imagem: "/assents/img/musse-de-limao.jpeg",
-      nome: "Mousse de Limão.",
+      nome: "Mousse de Limão. (uni)",
       descricao: "",
       preco: "R$ 8,00"
     }
